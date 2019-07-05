@@ -10,7 +10,6 @@
 *     <%- _css() %>
  */
 const cheerio = require('cheerio');
-const desc_by_count = (a, b) => (parseInt(b.count) - parseInt(a.count))
 
 module.exports = function (hexo) {
     hexo.extend.helper.register('_list_archives', function () {
@@ -41,7 +40,6 @@ module.exports = function (hexo) {
                 }
                 categories.push(category);
             });
-            categories.sort(desc_by_count)
             return categories;
         }
         return traverse($('.category-list'));
@@ -57,7 +55,6 @@ module.exports = function (hexo) {
                 count: $(this).find('.tag-list-count').text()
             });
         });
-        tags.sort(desc_by_count)
         return tags;
     });
 
