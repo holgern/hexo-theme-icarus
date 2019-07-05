@@ -1,16 +1,24 @@
 require('../includes/tasks/welcome');
 require('../includes/tasks/check_deps');
 require('../includes/tasks/check_config');
+// require('../includes/processors/diff')(hexo);
 require('../includes/generators/categories')(hexo);
 require('../includes/generators/category')(hexo);
 require('../includes/generators/tags')(hexo);
+require('../includes/generators/tag')(hexo);
+require('../includes/generators/archive')(hexo);
+require('../includes/generators/post')(hexo);
 require('../includes/generators/insight')(hexo);
+// require('../includes/generators/iframe_widget')(hexo);
+require('../includes/generators/pjax_widget')(hexo);
+require('../includes/renderers/markdown')(hexo);
 require('../includes/filters/highlight')(hexo);
 require('../includes/helpers/cdn')(hexo);
 require('../includes/helpers/config')(hexo);
 require('../includes/helpers/layout')(hexo);
 require('../includes/helpers/override')(hexo);
 require('../includes/helpers/page')(hexo);
+require('../includes/helpers/diff')(hexo);
 require('../includes/helpers/site')(hexo);
 
 // Debug helper

@@ -1,7 +1,10 @@
+<% if (page.__widget) { %>
+<%- body %>
+<% } else { %>
 <!DOCTYPE html>
 <html <%- has_config('language') ? ' lang="' + get_config('language').substring(0, 2) + '"' : '' %>>
 <head>
-    <%- partial('common/head') %>
+    <%- partial('common/head', {}, {cache: false}) %>
 </head>
 <body class="is-<%= column_count() %>-column">
     <%- partial('common/navbar', { page }) %>
@@ -19,17 +22,19 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column <%= main_column_class() %> has-order-2 column-main"><%- body %></div>
                 <%- partial('common/widget', { position: 'left' }) %>
                 <%- partial('common/widget', { position: 'right' }) %>
+                <%- partial('component/pjax_widget_js', {}, {cache: true}) %>
+                <div class="column <%= main_column_class() %> has-order-2 column-main"><%- body %></div>
             </div>
         </div>
     </section>
-    <%- partial('common/footer') %>
-    <%- partial('common/scripts') %>
+    <%- partial('common/footer', {}, {cache: true}) %>
+    <%- partial('common/scripts', {}, {cache: true}) %>
 
     <% if (has_config('search.type')) { %>
-    <%- partial('search/' + get_config('search.type')) %>
+    <%- partial('search/' + get_config('search.type'), {}, {cache: true}) %>
     <% } %>
 </body>
 </html>
+<% } %>
